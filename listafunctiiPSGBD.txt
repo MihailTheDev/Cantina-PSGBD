@@ -1,48 +1,39 @@
-Studenti:
--id (nr_matricol)
--nume	
--prenume
--parola
--telefon
-
-Profesori:
--id
--nume
--prenume
--parola
--telefon
+Clienti:
+	Tip
+	Id Clienti
+	nr Telefon
+	Nume
+	Prenume
 
 Meniu:
--pret
--nume
 -id_preparat
+-cantitate preparat
 -alergeni (cu view)
+
+View pentru meniu care contine alergeni;
 
 Preparate:
 -id
 -nume
--disponibilitate
--nota
--ingrediente (cu view)
+-rating
+-alergeni 	
+
 
 Ingrediente:
 -nume
--stoc
 -cantitate
 -pret
--alergeni
 
 Recenzii:
 -id
--id_student
--id_profesor
+-id_client
+-id_produs
 -continut
 -data_recenzie
--id_produs
+
 
 Rating:
 -id
--id_student
--id_profesor
--nota
+-id_client
 -id_produs
+-nota
