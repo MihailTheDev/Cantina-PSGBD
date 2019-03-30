@@ -1,0 +1,12 @@
+Sa foloseasca calculabilitate:
+
+
+Sa avem o tabela cu ingredientele necesare pentru prepararea mancarii 
+si cate ingrediente necesita fiecare preparat in parte si timpul de preparare.
+
+
+Sa avem o statistica in care sa vedem care este cel mai complex preparat si ce necesita acesta.
+Putem sa vedem si cele mai folosite ingrediente.
+
+
+Felurile de mancare preferate raportate la studenti si profesori.
