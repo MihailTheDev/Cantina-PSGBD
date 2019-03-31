@@ -1,9 +1,9 @@
 Clienti:
-	Tip
-	Id Clienti
-	nr Telefon
-	Nume
-	Prenume
+-	Tip
+-	Id Clienti
+-	nr Telefon
+-	Nume
+-	Prenume
 
 Meniu:
 -id_preparat
