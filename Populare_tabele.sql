@@ -1,3 +1,74 @@
+drop table Utilizatori cascade constraints;
+create table Utilizatori -- d
+(
+    id_utilizator INT NOT NULL PRIMARY KEY,
+    nume VARCHAR(15) NOT NULL,
+    tip VARCHAR(15) NOT NULL
+);
+/
+drop table Comanda cascade constraints;
+create table Comanda --d
+(
+    id_comanda INT NOT NULL PRIMARY KEY,
+    id_utilizator INT NOT NULL,
+    FOREIGN KEY(id_utilizator) REFERENCES Utilizatori(id_utilizator)
+)
+/
+drop table ProduseComandate cascade constraints;
+create table ProduseComandate --d
+(
+    id_produse_comandate INT NOT NULL PRIMARY KEY,
+    id_comanda INT NOT NULL,
+    id_produs INT NOT NULL,
+    FOREIGN KEY(id_comanda) REFERENCES Comanda(id_comanda)
+)
+/
+drop table Produse cascade constraints;
+create table Produse --d
+(
+    id_produs INT NOT NULL PRIMARY KEY,
+    nume VARCHAR(20) NOT NULL,
+    pret int not null
+)
+/
+drop table Meniu cascade constraints;
+create table Meniu
+(
+    id_row int not null PRIMARY key,
+    id_produs int not null,
+    pret int not null,
+    FOREIGN KEY(id_produs) REFERENCES Produse(id_produs)
+)
+/
+drop table Ingrediente cascade constraints;
+create table Ingrediente -- d
+(
+    id_ingredient int not null PRIMARY key,
+    nume_ingredient VARCHAR(20) not null,
+    cantitate_ingredient int
+)
+/
+drop table IngredienteleProduselor CASCADE CONSTRAINTS;
+create table IngredienteleProduselor --d
+(
+    id_ingrediente_produse int not null primary KEY,
+    id_produs int not null,
+    id_ingredient int not null,
+    FOREIGN key(id_produs) REFERENCES Produse(id_produs),
+    FOREIGN KEY(id_ingredient) REFERENCES Ingrediente(id_ingredient)
+)
+/
+drop table Rating CASCADE CONSTRAINTS;
+create table Rating
+(
+    id_rating int not null primary key,
+    id_produs int not null,
+    valoare_rating int not null,
+    FOREIGN KEY(id_produs) REFERENCES Produse(id_produs)
+)
+/
+
+
 DECLARE
     type strarray IS VARRAY(1000) of varchar2(255);
     lista_nume strarray := strarray('Ababei','Acasandrei','Adascalitei','Afanasie','Agafitei','Agape','Aioanei','Alexandrescu','Alexandru','Alexe','Alexii','Amarghioalei','Ambroci','Andonesei','Andrei','Andrian','Andrici','Andronic','Andros','Anghelina','Anita','Antochi','Antonie','Apetrei','Apostol','Arhip','Arhire','Arteni','Arvinte','Asaftei','Asofiei','Aungurenci','Avadanei','Avram','Babei','Baciu','Baetu','Balan','Balica','Banu','Barbieru','Barzu','Bazgan','Bejan','Bejenaru','Belcescu','Belciuganu','Benchea','Bilan','Birsanu','Bivol','Bizu','Boca','Bodnar','Boistean','Borcan','Bordeianu','Botezatu','Bradea','Braescu','Budaca','Bulai','Bulbuc-aioanei','Burlacu','Burloiu','Bursuc','Butacu','Bute','Buza','Calancea','Calinescu','Capusneanu','Caraiman','Carbune','Carp','Catana','Catiru','Catonoiu','Cazacu','Cazamir','Cebere','Cehan','Cernescu','Chelaru','Chelmu','Chelmus','Chibici','Chicos','Chilaboc','Chile','Chiriac','Chirila','Chistol','Chitic','Chmilevski','Cimpoesu','Ciobanu','Ciobotaru','Ciocoiu','Ciofu','Ciornei','Citea','Ciucanu','Clatinici','Clim','Cobuz','Coca','Cojocariu','Cojocaru','Condurache','Corciu','Corduneanu','Corfu','Corneanu','Corodescu','Coseru','Cosnita','Costan','Covatariu','Cozma','Cozmiuc','Craciunas','Crainiceanu','Creanga','Cretu','Cristea','Crucerescu','Cumpata','Curca','Cusmuliuc','Damian','Damoc','Daneliuc','Daniel','Danila','Darie','Dascalescu','Dascalu','Diaconu','Dima','Dimache','Dinu','Dobos','Dochitei','Dochitoiu','Dodan','Dogaru','Domnaru','Dorneanu','Dragan','Dragoman','Dragomir','Dragomirescu','Duceac','Dudau','Durnea','Edu','Eduard','Eusebiu','Fedeles','Ferestraoaru','Filibiu','Filimon','Filip','Florescu','Folvaiter','Frumosu','Frunza','Galatanu','Gavrilita','Gavriliuc','Gavrilovici','Gherase','Gherca','Ghergu','Gherman','Ghibirdic','Giosanu','Gitlan','Giurgila','Glodeanu','Goldan','Gorgan','Grama','Grigore','Grigoriu','Grosu','Grozavu','Gurau','Haba','Harabula','Hardon','Harpa','Herdes','Herscovici','Hociung','Hodoreanu','Hostiuc','Huma','Hutanu','Huzum','Iacob','Iacobuta','Iancu','Ichim','Iftimesei','Ilie','Insuratelu','Ionesei','Ionesi','Ionita','Iordache','Iordache-tiroiu','Iordan','Iosub','Iovu','Irimia','Ivascu','Jecu','Jitariuc','Jitca','Joldescu','Juravle','Larion','Lates','Latu','Lazar','Leleu','Leon','Leonte','Leuciuc','Leustean','Luca','Lucaci','Lucasi','Luncasu','Lungeanu','Lungu','Lupascu','Lupu','Macariu','Macoveschi','Maftei','Maganu','Mangalagiu','Manolache','Manole','Marcu','Marinov','Martinas','Marton','Mataca','Matcovici','Matei','Maties','Matrana','Maxim','Mazareanu','Mazilu','Mazur','Melniciuc-puica','Micu','Mihaela','Mihai','Mihaila','Mihailescu','Mihalachi','Mihalcea','Mihociu','Milut','Minea','Minghel','Minuti','Miron','Mitan','Moisa','Moniry-abyaneh','Morarescu','Morosanu','Moscu','Motrescu','Motroi','Munteanu','Murarasu','Musca','Mutescu','Nastaca','Nechita','Neghina','Negrus','Negruser','Negrutu','Nemtoc','Netedu','Nica','Nicu','Oana','Olanuta','Olarasu','Olariu','Olaru','Onu','Opariuc','Oprea','Ostafe','Otrocol','Palihovici','Pantiru','Pantiruc','Paparuz','Pascaru','Patachi','Patras','Patriche','Perciun','Perju','Petcu','Pila','Pintilie','Piriu','Platon','Plugariu','Podaru','Poenariu','Pojar','Popa','Popescu','Popovici','Poputoaia','Postolache','Predoaia','Prisecaru','Procop','Prodan','Puiu','Purice','Rachieru','Razvan','Reut','Riscanu','Riza','Robu','Roman','Romanescu','Romaniuc','Rosca','Rusu','Samson','Sandu','Sandulache','Sava','Savescu','Schifirnet','Scortanu','Scurtu','Sfarghiu','Silitra','Simiganoschi','Simion','Simionescu','Simionesei','Simon','Sitaru','Sleghel','Sofian','Soficu','Sparhat','Spiridon','Stan','Stavarache','Stefan','Stefanita','Stingaciu','Stiufliuc','Stoian','Stoica','Stoleru','Stolniceanu','Stolnicu','Strainu','Strimtu','Suhani','Tabusca','Talif','Tanasa','Teclici','Teodorescu','Tesu','Tifrea','Timofte','Tincu','Tirpescu','Toader','Tofan','Toma','Toncu','Trifan','Tudosa','Tudose','Tuduri','Tuiu','Turcu','Ulinici','Unghianu','Ungureanu','Ursache','Ursachi','Urse','Ursu','Varlan','Varteniuc','Varvaroi','Vasilache','Vasiliu','Ventaniuc','Vicol','Vidru','Vinatoru','Vlad','Voaides','Vrabie','Vulpescu','Zamosteanu','Zazuleac');
@@ -10,7 +81,6 @@ DECLARE
     v_prenume varchar2(255);
     v_tip varchar2(255);
     v_fk int;
-    v_zona_livrare varchar2(255);
     v_fk2 int;
     v_cantitate int;
     v_pret int;
@@ -22,52 +92,49 @@ DECLARE
     v_i int;
     v_j int;
 BEGIN
--- utilizator
-    for v_i in 1..1000000 loop
+-- utilizatori
+    for v_i in 1..1000 loop
         v_nume := lista_nume(trunc(dbms_random.value(0, lista_nume.count))+1);
         v_tip := lista_tip(trunc(dbms_random.value(0,lista_tip.count))+1);
-        insert into utilizatori values(v_i, v_nume, v_tip);
+        insert into Utilizatori values(v_i, v_nume, v_tip);
     end loop;
 -- comanda
     for v_i in 1..1000 loop
         v_fk := trunc(dbms_random.value(0, 1000)+1);
-        insert into comenzi values(v_i, v_fk);
+        insert into Comanda values(v_i, v_fk);
     end loop;
     -- produse
     for v_i in 1..1000 loop
         v_nume := lista_produse(trunc(dbms_random.value(0, lista_produse.count))+1);
         v_pret := trunc(dbms_random.value(0, 15)+1);
-        insert into produse values(v_i, v_nume, v_pret);
+        insert into Produse values(v_i, v_nume, v_pret);
     end loop;
 -- meniu
     for v_i in 1..1000 loop
         v_fk := trunc(dbms_random.value(0, 1000)+1);
         v_cantitate := (dbms_random.value(0, 100)+1);
-        insert into meniu values(v_i, v_fk, v_cantitate);
+        insert into Meniu values(v_i, v_fk, v_cantitate);
     end loop;
-
--- Detalii_Comanda
+-- produse comandate
     for v_i in 1..1000 loop
-		v_adresa := 'str' || ' ' || v_i;
-        v_fk := trunc(dbms_random.value(0,1000)+1);
-        v_fk2 := trunc(dbms_random.value(0, 1000)+1);
-        v_cantitate := trunc(dbms_random.value(0, 10) +1);
-		v_status := trunc(dbms_random.value(0,1));
-		v_adresa := 'str' || ' ' || v_i;
-        insert into detalii_comanda values (v_i, v_fk, v_status, v_adresa , v_fk2, v_cantitate);
+        v_fk := trunc(dbms_random.value(0, 1000)+1);    
+        v_fk2 := trunc(dbms_random.value(0, 1000)+1); 
+        insert into ProduseComandate values(v_i, v_fk, v_fk2);   
     end loop;
 -- ingrediente
-   for v_i in 1..1000 loop
+  for v_i in 1..1000 loop
        v_nume := lista_ingrediente(trunc(dbms_random.value(0, lista_ingrediente.count))+1);
-       insert into ingrediente values(v_i, v_nume);
-   end loop;
--- Reteta
-    for v_i in 1..1000 loop
-        v_fk := trunc(dbms_random.value(0,1000)+1);
-        v_fk2 := trunc(dbms_random.value(0, 1000)+1);
-        v_cantitate := trunc(dbms_random.value(0, 50) +1);
-        insert into Reteta values (v_i, v_fk, v_fk2, v_cantitate);
+       v_cantitate := trunc(dbms_random.value(0, 50) +1);
+      insert into Ingrediente values(v_i, v_nume, v_cantitate);
+  end loop;
+--ingredientele produselor
+for v_i in 1..1000 loop
+        v_fk := trunc(dbms_random.value(0, 1000)+1);    
+        v_fk2 := trunc(dbms_random.value(0, 1000)+1); 
+        insert into IngredienteleProduselor values(v_i, v_fk, v_fk2);   
     end loop;
+
+
 
 END;
 

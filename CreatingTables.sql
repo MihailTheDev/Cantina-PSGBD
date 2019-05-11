@@ -1,15 +1,5 @@
-drop table Rating;
-drop table IngredienteleProduselor;
-drop table Ingrediente;
-drop table ProduseComandate;
-drop table Produse;
-drop table Comanda; --done
-DROP TABLE Utilizator;--done
-drop table Meniu;
-
-
-drop table Utilizator cascade constraints;
-create table Utilizator
+drop table Utilizatori cascade constraints;
+create table Utilizatori -- d
 (
     id_utilizator INT NOT NULL PRIMARY KEY,
     nume VARCHAR(15) NOT NULL,
@@ -17,15 +7,15 @@ create table Utilizator
 );
 /
 drop table Comanda cascade constraints;
-create table Comanda
+create table Comanda --d
 (
     id_comanda INT NOT NULL PRIMARY KEY,
     id_utilizator INT NOT NULL,
-    FOREIGN KEY(id_utilizator) REFERENCES Utilizator(id_utilizator)
+    FOREIGN KEY(id_utilizator) REFERENCES Utilizatori(id_utilizator)
 )
 /
 drop table ProduseComandate cascade constraints;
-create table ProduseComandate
+create table ProduseComandate --d
 (
     id_produse_comandate INT NOT NULL PRIMARY KEY,
     id_comanda INT NOT NULL,
@@ -34,7 +24,7 @@ create table ProduseComandate
 )
 /
 drop table Produse cascade constraints;
-create table Produse
+create table Produse --d
 (
     id_produs INT NOT NULL PRIMARY KEY,
     nume VARCHAR(20) NOT NULL,
@@ -51,16 +41,15 @@ create table Meniu
 )
 /
 drop table Ingrediente cascade constraints;
-create table Ingrediente
+create table Ingrediente -- d
 (
     id_ingredient int not null PRIMARY key,
     nume_ingredient VARCHAR(20) not null,
-    cantitate_ingredient int,
-    pret int not null
+    cantitate_ingredient int
 )
 /
 drop table IngredienteleProduselor CASCADE CONSTRAINTS;
-create table IngredienteleProduselor
+create table IngredienteleProduselor --d
 (
     id_ingrediente_produse int not null primary KEY,
     id_produs int not null,
