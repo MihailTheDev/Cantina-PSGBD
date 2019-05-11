@@ -1,21 +1,22 @@
-drop table Review;
 drop table Rating;
 drop table IngredienteleProduselor;
 drop table Ingrediente;
 drop table ProduseComandate;
 drop table Produse;
-drop table Comanda;
-DROP TABLE Utilizator;
+drop table Comanda; --done
+DROP TABLE Utilizator;--done
+drop table Meniu;
 
 
+drop table Utilizator cascade constraints;
 create table Utilizator
 (
     id_utilizator INT NOT NULL PRIMARY KEY,
-    name VARCHAR(15) NOT NULL,
+    nume VARCHAR(15) NOT NULL,
     tip VARCHAR(15) NOT NULL
-)
+);
 /
-
+drop table Comanda cascade constraints;
 create table Comanda
 (
     id_comanda INT NOT NULL PRIMARY KEY,
@@ -23,25 +24,33 @@ create table Comanda
     FOREIGN KEY(id_utilizator) REFERENCES Utilizator(id_utilizator)
 )
 /
-
+drop table ProduseComandate cascade constraints;
 create table ProduseComandate
 (
     id_produse_comandate INT NOT NULL PRIMARY KEY,
     id_comanda INT NOT NULL,
     id_produs INT NOT NULL,
-    FOREIGN KEY(id_comanda) REFERENCES Comanda(id_utilizator)
+    FOREIGN KEY(id_comanda) REFERENCES Comanda(id_comanda)
 )
 /
-
+drop table Produse cascade constraints;
 create table Produse
 (
     id_produs INT NOT NULL PRIMARY KEY,
     nume VARCHAR(20) NOT NULL,
-    lista_alergeni VARCHAR(20) NOT NULL
-    
+    pret int not null
 )
 /
-
+drop table Meniu cascade constraints;
+create table Meniu
+(
+    id_row int not null PRIMARY key,
+    id_produs int not null,
+    pret int not null,
+    FOREIGN KEY(id_produs) REFERENCES Produse(id_produs)
+)
+/
+drop table Ingrediente cascade constraints;
 create table Ingrediente
 (
     id_ingredient int not null PRIMARY key,
@@ -50,6 +59,7 @@ create table Ingrediente
     pret int not null
 )
 /
+drop table IngredienteleProduselor CASCADE CONSTRAINTS;
 create table IngredienteleProduselor
 (
     id_ingrediente_produse int not null primary KEY,
@@ -59,7 +69,7 @@ create table IngredienteleProduselor
     FOREIGN KEY(id_ingredient) REFERENCES Ingrediente(id_ingredient)
 )
 /
-
+drop table Rating CASCADE CONSTRAINTS;
 create table Rating
 (
     id_rating int not null primary key,
@@ -68,13 +78,3 @@ create table Rating
     FOREIGN KEY(id_produs) REFERENCES Produse(id_produs)
 )
 /
-
-create table Review
-(
-    id_review int not null primary key,
-    id_produs int not null,
-    comentariu_review VARCHAR(20),
-    FOREIGN key(id_produs) REFERENCES Produse(id_produs)
-)
-/
-
