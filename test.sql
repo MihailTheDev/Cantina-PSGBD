@@ -8,7 +8,7 @@ begin
 --     INSERTINGREDIENTSCANTITY(v_id_list, v_cantity_list );
 --     GENERATE_MENU();
 --         ingredientsList := GETINGREDIENTSLIST(3);
-        v_number := Get_Number_Of_Products(2);
+        v_number := Get_Number_Of_Products(1);
 
             dbms_output.put_line(' ingredients are:');
             dbms_output.put_line(v_number);
@@ -20,10 +20,10 @@ end;
 
 select * from INGREDIENTE;
 
-select * from produse p
+select i.NUME_INGREDIENT, i.CANTITATE_INGREDIENT from produse p
 join INGREDIENTELEPRODUSELOR ig on p.ID_PRODUS = ig.ID_PRODUS
 join INGREDIENTE I on ig.ID_INGREDIENT = I.ID_INGREDIENT
-where p.ID_PRODUS =2
+where p.ID_PRODUS =1
 order by p.PRET desc ;
 
 select * from produse order by  PRET;

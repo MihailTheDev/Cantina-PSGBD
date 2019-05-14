@@ -45,17 +45,16 @@ as
     v_i number;
 --     declarari
 begin
---     v_result_list.extend(1000);
     v_ingredientsList := GETINGREDIENTSLIST(v_id);
     for i in v_ingredientsList.First..v_ingredientsList.LAST loop
         v_cantity := Get_Ingredient_Cantity(v_ingredientsList(i));
---         dbms_output.put_line(v_cantity);
---             v_cantity := 5;
         v_result_list.extend(1);
         v_result_list(v_index) := v_cantity;
+        v_index := v_index +1;
     end loop;
     v_min := v_result_list(1);
-    for v_i in 1..v_index loop
+    for v_i in 1..v_index-1 loop
+--         dbms_output.put_line(v_result_list(v_i)) ;
         if(v_min > v_result_list(v_i)) then
             v_min := v_result_list(v_i);
         end if;
@@ -64,12 +63,12 @@ begin
         return v_min;
     end if;
 --         dbms_output.put_line(v_min) ;
---      for i in v_ingredientsList.First..v_ingredientsList.Last loop
--- --         v_cantity := Get_Ingredient_Cantity(v_ingredientsList(i));
--- -- --         dbms_output.put_line(v_cantity ) ;
--- --         v_cantity:= v_cantity - v_min;
--- -- --         UPDATE_INGREDIENT_CANTITY(v_ingredientsList(i), v_cantity);
--- --         dbms_output.put_line(v_ingredientsList(i)) ;
--- --     end loop;
+     for i in v_ingredientsList.First..v_ingredientsList.Last loop
+        v_cantity := Get_Ingredient_Cantity(v_ingredientsList(i));
+        v_cantity:= v_cantity - v_min;
+--         dbms_output.put_line(i) ;
+        UPDATE_INGREDIENT_CANTITY(v_ingredientsList(i), v_cantity);
+--         dbms_output.put_line(v_ingredientsList(i)) ;
+    end loop;
     return v_min;
 end;

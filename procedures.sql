@@ -19,6 +19,10 @@ CREATE OR REPLACE PROCEDURE Update_Ingredient_Cantity
 AS
 
 BEGIN
+--      dbms_output.put_line(id) ;
+--      dbms_output.put_line(CANTITY) ;
+--      dbms_output.put_line('') ;
+
         update INGREDIENTE
         set CANTITATE_INGREDIENT = CANTITY
         where ID_INGREDIENT = ID;
