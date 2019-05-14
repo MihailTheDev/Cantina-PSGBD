@@ -54,7 +54,6 @@ create table IngredienteleProduselor --d
     id int not null primary KEY,
     id_produs int not null,
     id_ingredient int not null,
-    cantitate int not null,
     FOREIGN key(id_produs) REFERENCES Produse(id_produs),
     FOREIGN KEY(id_ingredient) REFERENCES Ingrediente(id_ingredient)
 )
@@ -129,12 +128,11 @@ BEGIN
       insert into Ingrediente values(v_i, v_nume, v_cantitate);
   end loop;
 --ingredientele produselor
-for v_i in 1..1000 loop
+for v_i in 1..50 loop
         v_fk := trunc(dbms_random.value(0, lista_produse
                                                .COUNT)+1);
         v_fk2 := trunc(dbms_random.value(0, 19)+1);
-        v_cantitate := trunc(dbms_random.value(0, 30)+1);
-        insert into IngredienteleProduselor values(v_i, v_fk, v_fk2, v_cantitate);
+        insert into IngredienteleProduselor values(v_i, v_fk, v_fk2);
     end loop;
 
 END;

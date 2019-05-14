@@ -1,2 +1,2 @@
 
-create or replace type number_type as varray(20) of number;
+create or replace type number_type as varray(1000) of integer;
