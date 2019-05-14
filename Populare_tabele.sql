@@ -51,9 +51,10 @@ create table Ingrediente -- d
 drop table IngredienteleProduselor CASCADE CONSTRAINTS;
 create table IngredienteleProduselor --d
 (
-    id_ingrediente_produse int not null primary KEY,
+    id int not null primary KEY,
     id_produs int not null,
     id_ingredient int not null,
+    cantitate int not null,
     FOREIGN key(id_produs) REFERENCES Produse(id_produs),
     FOREIGN KEY(id_ingredient) REFERENCES Ingrediente(id_ingredient)
 )
@@ -104,37 +105,37 @@ BEGIN
         insert into Comanda values(v_i, v_fk);
     end loop;
     -- produse
-    for v_i in 1..1000 loop
+    for v_i in 1..lista_produse.COUNT loop
         v_nume := lista_produse(trunc(dbms_random.value(0, lista_produse.count))+1);
         v_pret := trunc(dbms_random.value(0, 15)+1);
         insert into Produse values(v_i, v_nume, v_pret);
     end loop;
 -- meniu
     for v_i in 1..1000 loop
-        v_fk := trunc(dbms_random.value(0, 1000)+1);
+        v_fk := trunc(dbms_random.value(0, lista_produse.COUNT)+1);
         v_cantitate := (dbms_random.value(0, 100)+1);
         insert into Meniu values(v_i, v_fk, v_cantitate);
     end loop;
 -- produse comandate
     for v_i in 1..1000 loop
         v_fk := trunc(dbms_random.value(0, 1000)+1);    
-        v_fk2 := trunc(dbms_random.value(0, 1000)+1); 
+        v_fk2 := trunc(dbms_random.value(0, lista_produse.COUNT)+1);
         insert into ProduseComandate values(v_i, v_fk, v_fk2);   
     end loop;
 -- ingrediente
-  for v_i in 1..1000 loop
+  for v_i in 1..19 loop
        v_nume := lista_ingrediente(trunc(dbms_random.value(0, lista_ingrediente.count))+1);
        v_cantitate := trunc(dbms_random.value(0, 50) +1);
       insert into Ingrediente values(v_i, v_nume, v_cantitate);
   end loop;
 --ingredientele produselor
 for v_i in 1..1000 loop
-        v_fk := trunc(dbms_random.value(0, 1000)+1);    
-        v_fk2 := trunc(dbms_random.value(0, 1000)+1); 
-        insert into IngredienteleProduselor values(v_i, v_fk, v_fk2);   
+        v_fk := trunc(dbms_random.value(0, lista_produse
+                                               .COUNT)+1);
+        v_fk2 := trunc(dbms_random.value(0, 19)+1);
+        v_cantitate := trunc(dbms_random.value(0, 30)+1);
+        insert into IngredienteleProduselor values(v_i, v_fk, v_fk2, v_cantitate);
     end loop;
-
-
 
 END;
 

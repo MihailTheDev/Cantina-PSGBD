@@ -43,7 +43,7 @@ create table Meniu
 drop table Ingrediente cascade constraints;
 create table Ingrediente -- d
 (
-    id_ingredient int not null PRIMARY key,
+    id int not null PRIMARY key,
     nume_ingredient VARCHAR(20) not null,
     cantitate_ingredient int
 )
@@ -51,7 +51,7 @@ create table Ingrediente -- d
 drop table IngredienteleProduselor CASCADE CONSTRAINTS;
 create table IngredienteleProduselor --d
 (
-    id_ingrediente_produse int not null primary KEY,
+    id int not null primary KEY,
     id_produs int not null,
     id_ingredient int not null,
     FOREIGN key(id_produs) REFERENCES Produse(id_produs),
