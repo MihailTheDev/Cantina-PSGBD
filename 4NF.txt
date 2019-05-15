@@ -1,0 +1,12 @@
+Schema se afla in 4NF deoarece satisface BCNF si nu are dependente multivaluate.
+
+Dependentele multivaluate sunt prezente atunci cand:
+ A deriveaza B si sunt cel putin 2 valori ale lui B pentru A.
+Sunt cel putin 3 coloane. Daca ar fi doar 2, s-ar putea separa foarte usor in 2 tabele diferite.
+Pentru un tabel cu 3 coloane, coloanele B si C sunt independente intre ele.
+
+Satisface Boyce-Codd NF deoarece satisface 3NF si nu exista nicio cheie primara care sa depinda de un atribut non-primar.
+
+Satisface 3NF prin faptul ca satisface 2NF si nu exista vreun atribut care sa depinda de un alt atribut non-primar. (adica dependenta tranzitiva nu este satisfacuta)
+
+Satisface 2NF prin faptul ca satisface 1NF si pentru ca nu exista vreun atribut care sa faca parte din cheia candidat si de care sa depinda ( doar de el si nu de toata cheia candidat) un alt atribut. (adica dependenta partiala nu este satisfacuta).
