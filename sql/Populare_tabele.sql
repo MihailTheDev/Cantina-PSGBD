@@ -34,9 +34,9 @@ create table Produse --d
 drop table Meniu cascade constraints;
 create table Meniu
 (
-    id_row int not null PRIMARY key,
+    id number not null PRIMARY key,
     id_produs int not null,
-    pret int not null,
+    cantitate number not null,
     FOREIGN KEY(id_produs) REFERENCES Produse(id_produs)
 )
 /
@@ -110,11 +110,11 @@ BEGIN
         insert into Produse values(v_i, v_nume, v_pret);
     end loop;
 -- meniu
-    for v_i in 1..1000 loop
-        v_fk := trunc(dbms_random.value(0, lista_produse.COUNT)+1);
-        v_cantitate := (dbms_random.value(0, 100)+1);
-        insert into Meniu values(v_i, v_fk, v_cantitate);
-    end loop;
+--     for v_i in 1..1000 loop
+--         v_fk := trunc(dbms_random.value(0, lista_produse.COUNT)+1);
+--         v_cantitate := (dbms_random.value(0, 100)+1);
+--         insert into Meniu values(v_i, v_fk, v_cantitate);
+--     end loop;
 -- produse comandate
     for v_i in 1..1000 loop
         v_fk := trunc(dbms_random.value(0, 1000)+1);    

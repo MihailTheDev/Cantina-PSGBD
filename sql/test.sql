@@ -14,6 +14,8 @@ end;
 
 select * from INGREDIENTE;
 
+select * from MENIU;
+
 select i.NUME_INGREDIENT, i.CANTITATE_INGREDIENT, p.PRET from produse p
 join INGREDIENTELEPRODUSELOR ig on p.ID_PRODUS = ig.ID_PRODUS
 join INGREDIENTE I on ig.ID_INGREDIENT = I.ID_INGREDIENT
