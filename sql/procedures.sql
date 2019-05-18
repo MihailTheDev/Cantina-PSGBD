@@ -10,7 +10,7 @@ BEGIN
 --     dbms_output.put_line(v_size);
     for v_i in 1..v_size loop
         update INGREDIENTE set CANTITATE_INGREDIENT = CANTITY(v_i)  where ID_INGREDIENT = v_i;
-    dbms_output.put_line(v_size);
+--     dbms_output.put_line(v_size);
     end loop;
 END Update_Ingredients_Cantity;
 /
@@ -30,16 +30,20 @@ END Update_Ingredient_Cantity;
 /
 CREATE OR REPLACE PROCEDURE GENERATE_MENU
 AS
-    cursor lista_produse is  select distinct * from produse
-        join INGREDIENTELEPRODUSELOR ig on produse.ID_PRODUS = ig.ID_PRODUS
-        order by produse.PRET desc ;
+--     order by (select count(nume) from produse p join INGREDIENTELEPRODUSELOR I2 on p.ID_PRODUS = I2.ID_PRODUS)/p.PRET asc ;
+    v_number number;
+    v_id number;
+    v_start number := 1;
+    v_end number := 10;
+    cursor lista_produse is  select distinct * from produse p;
 BEGIN
-
-    for v_line in lista_produse loop
-        dbms_output.put_line(v_line.NUME);
+    for produs in lista_produse loop
+--         dbms_output.put_line('id produs:');
+--         dbms_output.put_line(v_line.ID_PRODUS);
+--         v_id := (v_line.ID_PRODUS);
+v_number :=  GET_NUMBER_OF_PRODUCTS(produs.ID_PRODUS);
     end loop;
---     dbms_output.put_line(3);
 END GENERATE_MENU;
 /
-create or replace procedure update_Ing
+-- create or replace procedure update_Ing
 

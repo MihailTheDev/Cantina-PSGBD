@@ -17,7 +17,7 @@ create table Comanda --d
 drop table ProduseComandate cascade constraints;
 create table ProduseComandate --d
 (
-    id_produse_comandate INT NOT NULL PRIMARY KEY,
+    id_produse_comandate number NOT NULL PRIMARY KEY,
     id_comanda INT NOT NULL,
     id_produs INT NOT NULL,
     FOREIGN KEY(id_comanda) REFERENCES Comanda(id_comanda)
@@ -26,7 +26,7 @@ create table ProduseComandate --d
 drop table Produse cascade constraints;
 create table Produse --d
 (
-    id_produs INT NOT NULL PRIMARY KEY,
+    id_produs number NOT NULL PRIMARY KEY,
     nume VARCHAR(20) NOT NULL,
     pret int not null
 )
@@ -45,13 +45,13 @@ create table Ingrediente -- d
 (
     id_ingredient int not null PRIMARY key,
     nume_ingredient VARCHAR(20) not null,
-    cantitate_ingredient int
+    cantitate_ingredient number
 )
 /
 drop table IngredienteleProduselor CASCADE CONSTRAINTS;
 create table IngredienteleProduselor --d
 (
-    id int not null primary KEY,
+    id number not null primary KEY,
     id_produs int not null,
     id_ingredient int not null,
     FOREIGN key(id_produs) REFERENCES Produse(id_produs),
