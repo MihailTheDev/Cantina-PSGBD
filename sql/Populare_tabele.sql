@@ -3,6 +3,7 @@ create table Utilizatori -- d
 (
     id_utilizator INT NOT NULL PRIMARY KEY,
     nume VARCHAR(15) NOT NULL,
+    parola varchar(15) not null,
     tip VARCHAR(15) NOT NULL
 );
 /
@@ -12,17 +13,10 @@ create table Comanda --d
     id_comanda INT NOT NULL PRIMARY KEY,
     id_utilizator INT NOT NULL,
     FOREIGN KEY(id_utilizator) REFERENCES Utilizatori(id_utilizator)
+
 )
 /
-drop table ProduseComandate cascade constraints;
-create table ProduseComandate --d
-(
-    id_produse_comandate number NOT NULL PRIMARY KEY,
-    id_comanda INT NOT NULL,
-    id_produs INT NOT NULL,
-    FOREIGN KEY(id_comanda) REFERENCES Comanda(id_comanda)
-)
-/
+
 drop table Produse cascade constraints;
 create table Produse --d
 (
@@ -35,11 +29,22 @@ drop table Meniu cascade constraints;
 create table Meniu
 (
     id number not null PRIMARY key,
-    id_produs int not null,
+    id_produs number not null,
     cantitate number not null,
     FOREIGN KEY(id_produs) REFERENCES Produse(id_produs)
 )
 /
+drop table ProduseComandate cascade constraints;
+create table ProduseComandate --d
+(
+    id_produse_comandate number NOT NULL PRIMARY KEY,
+    id_comanda INT NOT NULL,
+    id_produs INT NOT NULL,
+    foreign key (id_comanda) references Comanda(id_comanda),
+    foreign key (id_produs) references Produse(id_produs)
+)
+/
+
 drop table Ingrediente cascade constraints;
 create table Ingrediente -- d
 (
@@ -93,21 +98,30 @@ DECLARE
     v_j int;
 BEGIN
 -- utilizatori
-    for v_i in 1..1000 loop
+    for v_i in 1..1000000 loop
         v_nume := lista_nume(trunc(dbms_random.value(0, lista_nume.count))+1);
         v_tip := lista_tip(trunc(dbms_random.value(0,lista_tip.count))+1);
-        insert into Utilizatori values(v_i, v_nume, v_tip);
+        insert into Utilizatori values(v_i, v_nume, 'admin', v_tip);
     end loop;
+
 -- comanda
     for v_i in 1..1000 loop
         v_fk := trunc(dbms_random.value(0, 1000)+1);
+
         insert into Comanda values(v_i, v_fk);
     end loop;
+
     -- produse
     for v_i in 1..lista_produse.COUNT loop
         v_nume := lista_produse(trunc(dbms_random.value(0, lista_produse.count))+1);
         v_pret := trunc(dbms_random.value(0, 15)+1);
         insert into Produse values(v_i, v_nume, v_pret);
+    end loop;
+        -- produse comandate
+    for v_i in 1..1000 loop
+        v_fk := trunc(dbms_random.value(0, 1000)+1);
+        v_fk2 := trunc(dbms_random.value(0, lista_produse.COUNT)+1);
+        insert into ProduseComandate values(v_i, v_fk, v_fk2);
     end loop;
 -- meniu
 --     for v_i in 1..1000 loop
@@ -115,12 +129,7 @@ BEGIN
 --         v_cantitate := (dbms_random.value(0, 100)+1);
 --         insert into Meniu values(v_i, v_fk, v_cantitate);
 --     end loop;
--- produse comandate
-    for v_i in 1..1000 loop
-        v_fk := trunc(dbms_random.value(0, 1000)+1);    
-        v_fk2 := trunc(dbms_random.value(0, lista_produse.COUNT)+1);
-        insert into ProduseComandate values(v_i, v_fk, v_fk2);   
-    end loop;
+
 -- ingrediente
   for v_i in 1..19 loop
        v_nume := lista_ingrediente(trunc(dbms_random.value(0, lista_ingrediente.count))+1);

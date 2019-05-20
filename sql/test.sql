@@ -1,7 +1,7 @@
 declare
-      v_id_list number_type := NUMBER_TYPE(1,2,3,5,6);
-      v_cantity_list number_type := NUMBER_TYPE(10,15,30,5,7);
-    ingredientsList NUMBER_TYPE;
+      v_id_list number_list := number_list(1,2,3,5,6);
+      v_cantity_list number_list := number_list(10,15,30,5,7);
+    ingredientsList number_list;
     v_number number;
 
 begin
@@ -9,7 +9,7 @@ begin
 --     GENERATE_MENU();
 --         v_number := Get_Number_Of_Products(5);
 --         dbms_output.put_line(v_number) ;
-        GENERATE_MENU();
+        v_number;
 end;
 
 declare num number; begin num :=generate; end;
@@ -19,6 +19,10 @@ declare num number; begin num :=generate; end;
 select generate from dual;
 
 delete from meniu;
+
+select * from UTILIZATORI;
+
+select * from users;
 
 select * from INGREDIENTE;
 
@@ -33,3 +37,25 @@ order by p.PRET desc ;
 select * from produse order by  PRET;
 
 select * from INGREDIENTELEPRODUSELOR;
+
+
+-- test check user
+select * from UTILIZATORI;
+begin
+    dbms_output.put_line('utliziatorul este..'||checkUser('gigi', 'becali'));
+    end;
+/
+-- test for insert
+declare
+    v_res number;
+    begin
+        v_res := createUser('gigi', 'admin', 'becali');
+        dbms_output.put_line('utliziatorul este..'||checkUser('gigi', 'becali'));
+    end;
+/
+--  test delete
+begin
+    dbms_output.put_line('statusul stergerii este: '||deleteUser('gigi', 'becali'));
+end;
+/
+

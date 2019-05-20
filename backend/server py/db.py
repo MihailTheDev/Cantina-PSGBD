@@ -1,5 +1,3 @@
-from __future__ import print_function
-
 import cx_Oracle
 
 _connectionString = "student/student@localhost/XE"
