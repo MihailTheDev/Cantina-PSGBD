@@ -12,6 +12,14 @@ begin
         GENERATE_MENU();
 end;
 
+declare num number; begin num :=generate; end;
+
+ BEGIN DBMS_OUTPUT.PUT_LINE('9 squared is ' || generate() );END;
+
+select generate from dual;
+
+delete from meniu;
+
 select * from INGREDIENTE;
 
 select * from MENIU;

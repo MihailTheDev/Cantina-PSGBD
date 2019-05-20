@@ -33,47 +33,75 @@ begin
 end;
 
 
-drop procedure Get_Number_Of_Products;
+drop function  Get_Number_Of_Products;
 create or replace function Get_Number_Of_Products(v_id number)
 return number
 as
-    v_ingredientsList NUMBER_TYPE;
-    v_min number := 0;
-    v_quantity number;
-    v_result_list NUMBER_TYPE := NUMBER_TYPE();
-    v_index number := 1;
-    v_i number;
+   v_ingredientsList NUMBER_TYPE;
+   v_min number := 0;
+   v_quantity number;
+   v_result_list NUMBER_TYPE := NUMBER_TYPE();
+   v_index number := 1;
+   v_i number;
 --     declarari
 begin
-    v_ingredientsList := GETINGREDIENTSLIST(v_id);
-         dbms_output.put_line(v_ingredientsList.COUNT);
-        v_index:=1;
-        if(v_ingredientsList.COUNT = 0) then
-            return 0;
-            end if;
-            for i in 1..v_ingredientsList.COUNT loop
-                v_quantity := Get_Ingredient_Quantity(v_ingredientsList(i));
-                v_result_list.extend(1);
-                v_result_list(v_index) := v_quantity;
-                v_index := v_index +1;
-            end loop;
-    v_min := v_result_list(1);
-    for v_i in 1..v_index-1 loop
-        if(v_min > v_result_list(v_i)) then
-            v_min := v_result_list(v_i);
-        end if;
-    end loop;
-    if(v_min = 0) then
-        return v_min;
-    end if;
+   v_ingredientsList := GETINGREDIENTSLIST(v_id);
+--         dbms_output.put_line(v_ingredientsList.COUNT);
+       v_index:=1;
+       if(v_ingredientsList.COUNT = 0) then
+           return 0;
+           end if;
+           for i in 1..v_ingredientsList.COUNT loop
+               v_quantity := Get_Ingredient_Quantity(v_ingredientsList(i));
+               v_result_list.extend(1);
+               v_result_list(v_index) := v_quantity;
+               v_index := v_index +1;
+           end loop;
+   v_min := v_result_list(1);
+   for v_i in 1..v_index-1 loop
+       if(v_min > v_result_list(v_i)) then
+           v_min := v_result_list(v_i);
+       end if;
+   end loop;
+   if(v_min = 0) then
+       return v_min;
+   end if;
 --         dbms_output.put_line(v_ingredientsList.COUNT) ;
      for i in 1..v_ingredientsList.COUNT loop
         v_quantity := Get_Ingredient_Cantity(v_ingredientsList(i));
         v_quantity:= v_quantity - v_min;
 --         dbms_output.put_line(i) ;
-        UPDATE_INGREDIENT_CANTITY(v_ingredientsList(i), v_quantity);
+--         UPDATE_INGREDIENT_CANTITY(v_ingredientsList(i), v_quantity);
 --         dbms_output.put_line(v_ingredientsList(i)) ;
     end loop;
 --         dbms_output.put_line(v_min) ;
     return v_min;
 end;
+/
+create or replace function generate
+return number
+as
+      cursor lista_produse is select distinct *
+                            from produse p
+                            order by (select count(nume)
+                                      from produse p
+                                               join INGREDIENTELEPRODUSELOR I2 on p.ID_PRODUS = I2.ID_PRODUS) /
+                                     p.PRET asc ;
+
+      v_number number;
+    v_index  number := 1;
+    v_start  number := 1;
+    v_end    number := 10;
+begin
+    for produs in lista_produse
+        loop
+            v_number := GET_NUMBER_OF_PRODUCTS(produs.ID_PRODUS);
+            dbms_output.put_line(v_number);
+            if (v_number > 0) then
+                insert into meniu(ID, ID_PRODUS, CANTITATE) VALUES (v_index, produs.ID_PRODUS, v_number);
+                v_index := v_index+1;
+            end if;
+        end loop;
+    return 1;
+end;
+    /

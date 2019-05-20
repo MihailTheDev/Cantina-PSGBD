@@ -52,4 +52,34 @@ BEGIN
 END GENERATE_MENU;
 /
 -- create or replace procedure update_Ing
+CREATE OR REPLACE function MENU (v_lla number) return number
+AS
+    cursor lista_produse is select distinct *
+                            from produse p
+                            order by (select count(nume)
+                                      from produse p
+                                               join INGREDIENTELEPRODUSELOR I2 on p.ID_PRODUS = I2.ID_PRODUS) /
+                                     p.PRET asc ;
+    v_number number;
+    v_index  number := 1;
+    v_start  number := 1;
+    v_end    number := 10;
+BEGIN
+    for produs in lista_produse
+        loop
+--             v_number := GET_NUMBER_OF_PRODUCTS(produs.ID_PRODUS);
+            dbms_output.put_line(v_number);
+            if (v_number > 0) then
+                insert into meniu(ID, ID_PRODUS, CANTITATE) VALUES (v_index, produs.ID_PRODUS, v_number);
+                v_index := v_index+1;
+            end if;
+        end loop;
+        return 0;
+END MENU;
 
+/
+declare
+v_number number;
+begin
+v_number = menu(2);
+end;
