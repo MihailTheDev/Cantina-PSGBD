@@ -1,0 +1,30 @@
+c:\users\mike\documents\visual studio 2015\Projects\MailRu register bot\MailRu register bot\bin\Debug\MailRu register bot.exe.config
+c:\users\mike\documents\visual studio 2015\Projects\MailRu register bot\MailRu register bot\bin\Debug\MailRu register bot.exe
+c:\users\mike\documents\visual studio 2015\Projects\MailRu register bot\MailRu register bot\bin\Debug\MailRu register bot.pdb
+c:\users\mike\documents\visual studio 2015\Projects\MailRu register bot\MailRu register bot\bin\Debug\RestSharp.dll
+c:\users\mike\documents\visual studio 2015\Projects\MailRu register bot\MailRu register bot\bin\Debug\RestSharp.xml
+c:\users\mike\documents\visual studio 2015\Projects\MailRu register bot\MailRu register bot\obj\Debug\MailRu register bot.csprojResolveAssemblyReference.cache
+c:\users\mike\documents\visual studio 2015\Projects\MailRu register bot\MailRu register bot\obj\Debug\MailRu_register_bot.Form1.resources
+c:\users\mike\documents\visual studio 2015\Projects\MailRu register bot\MailRu register bot\obj\Debug\MailRu_register_bot.Properties.Resources.resources
+c:\users\mike\documents\visual studio 2015\Projects\MailRu register bot\MailRu register bot\obj\Debug\MailRu register bot.csproj.GenerateResource.Cache
+c:\users\mike\documents\visual studio 2015\Projects\MailRu register bot\MailRu register bot\obj\Debug\MailRu register bot.exe
+c:\users\mike\documents\visual studio 2015\Projects\MailRu register bot\MailRu register bot\obj\Debug\MailRu register bot.pdb
+c:\users\mike\documents\visual studio 2015\Projects\MailRu register bot\MailRu register bot\bin\Debug\HtmlAgilityPack.dll
+c:\users\mike\documents\visual studio 2015\Projects\MailRu register bot\MailRu register bot\bin\Debug\HtmlAgilityPack.pdb
+c:\users\mike\documents\visual studio 2015\Projects\MailRu register bot\MailRu register bot\bin\Debug\HtmlAgilityPack.xml
+C:\Users\mike\source\repos\oracle db\MailRu register bot\obj\Debug\MailRu register bot.csprojAssemblyReference.cache
+C:\Users\mike\source\repos\oracle db\MailRu register bot\obj\Debug\MailRu_register_bot.Form1.resources
+C:\Users\mike\source\repos\oracle db\MailRu register bot\obj\Debug\MailRu_register_bot.Properties.Resources.resources
+C:\Users\mike\source\repos\oracle db\MailRu register bot\obj\Debug\MailRu register bot.csproj.GenerateResource.cache
+C:\Users\mike\source\repos\oracle db\MailRu register bot\obj\Debug\MailRu register bot.csproj.CoreCompileInputs.cache
+C:\Users\mike\source\repos\oracle db\MailRu register bot\obj\Debug\MailRu register bot.exe
+C:\Users\mike\source\repos\oracle db\MailRu register bot\obj\Debug\MailRu register bot.pdb
+C:\Users\mike\source\repos\oracle db\MailRu register bot\bin\Debug\MailRu register bot.exe.config
+C:\Users\mike\source\repos\oracle db\MailRu register bot\bin\Debug\MailRu register bot.exe
+C:\Users\mike\source\repos\oracle db\MailRu register bot\bin\Debug\MailRu register bot.pdb
+C:\Users\mike\source\repos\oracle db\MailRu register bot\bin\Debug\HtmlAgilityPack.dll
+C:\Users\mike\source\repos\oracle db\MailRu register bot\bin\Debug\RestSharp.dll
+C:\Users\mike\source\repos\oracle db\MailRu register bot\bin\Debug\HtmlAgilityPack.pdb
+C:\Users\mike\source\repos\oracle db\MailRu register bot\bin\Debug\HtmlAgilityPack.xml
+C:\Users\mike\source\repos\oracle db\MailRu register bot\bin\Debug\RestSharp.xml
+C:\Users\mike\source\repos\oracle db\MailRu register bot\obj\Debug\MailRu register bot.csproj.CopyComplete

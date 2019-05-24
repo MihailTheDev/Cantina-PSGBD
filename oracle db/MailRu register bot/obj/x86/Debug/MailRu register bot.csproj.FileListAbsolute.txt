@@ -1,0 +1,32 @@
+C:\Users\mike\source\repos\oracle db\MailRu register bot\bin\x86\Debug\MailRu register bot.exe.config
+C:\Users\mike\source\repos\oracle db\MailRu register bot\bin\x86\Debug\MailRu register bot.exe
+C:\Users\mike\source\repos\oracle db\MailRu register bot\bin\x86\Debug\MailRu register bot.pdb
+C:\Users\mike\source\repos\oracle db\MailRu register bot\bin\x86\Debug\HtmlAgilityPack.dll
+C:\Users\mike\source\repos\oracle db\MailRu register bot\bin\x86\Debug\RestSharp.dll
+C:\Users\mike\source\repos\oracle db\MailRu register bot\bin\x86\Debug\HtmlAgilityPack.pdb
+C:\Users\mike\source\repos\oracle db\MailRu register bot\bin\x86\Debug\HtmlAgilityPack.xml
+C:\Users\mike\source\repos\oracle db\MailRu register bot\bin\x86\Debug\RestSharp.xml
+C:\Users\mike\source\repos\oracle db\MailRu register bot\obj\x86\Debug\MailRu_register_bot.Form1.resources
+C:\Users\mike\source\repos\oracle db\MailRu register bot\obj\x86\Debug\MailRu_register_bot.Properties.Resources.resources
+C:\Users\mike\source\repos\oracle db\MailRu register bot\obj\x86\Debug\MailRu register bot.csproj.GenerateResource.cache
+C:\Users\mike\source\repos\oracle db\MailRu register bot\obj\x86\Debug\MailRu register bot.csproj.CoreCompileInputs.cache
+C:\Users\mike\source\repos\oracle db\MailRu register bot\obj\x86\Debug\MailRu register bot.csproj.CopyComplete
+C:\Users\mike\source\repos\oracle db\MailRu register bot\obj\x86\Debug\MailRu register bot.exe
+C:\Users\mike\source\repos\oracle db\MailRu register bot\obj\x86\Debug\MailRu register bot.pdb
+F:\Cantina-PSGBD\oracle db\MailRu register bot\bin\x86\Debug\MailRu register bot.exe.config
+F:\Cantina-PSGBD\oracle db\MailRu register bot\bin\x86\Debug\MailRu register bot.exe
+F:\Cantina-PSGBD\oracle db\MailRu register bot\bin\x86\Debug\MailRu register bot.pdb
+F:\Cantina-PSGBD\oracle db\MailRu register bot\bin\x86\Debug\HtmlAgilityPack.dll
+F:\Cantina-PSGBD\oracle db\MailRu register bot\bin\x86\Debug\Oracle.DataAccess.dll
+F:\Cantina-PSGBD\oracle db\MailRu register bot\bin\x86\Debug\RestSharp.dll
+F:\Cantina-PSGBD\oracle db\MailRu register bot\bin\x86\Debug\HtmlAgilityPack.pdb
+F:\Cantina-PSGBD\oracle db\MailRu register bot\bin\x86\Debug\HtmlAgilityPack.xml
+F:\Cantina-PSGBD\oracle db\MailRu register bot\bin\x86\Debug\RestSharp.xml
+F:\Cantina-PSGBD\oracle db\MailRu register bot\obj\x86\Debug\MailRu register bot.csprojAssemblyReference.cache
+F:\Cantina-PSGBD\oracle db\MailRu register bot\obj\x86\Debug\MailRu_register_bot.Form1.resources
+F:\Cantina-PSGBD\oracle db\MailRu register bot\obj\x86\Debug\MailRu_register_bot.Properties.Resources.resources
+F:\Cantina-PSGBD\oracle db\MailRu register bot\obj\x86\Debug\MailRu register bot.csproj.GenerateResource.cache
+F:\Cantina-PSGBD\oracle db\MailRu register bot\obj\x86\Debug\MailRu register bot.csproj.CoreCompileInputs.cache
+F:\Cantina-PSGBD\oracle db\MailRu register bot\obj\x86\Debug\MailRu register bot.csproj.CopyComplete
+F:\Cantina-PSGBD\oracle db\MailRu register bot\obj\x86\Debug\MailRu register bot.exe
+F:\Cantina-PSGBD\oracle db\MailRu register bot\obj\x86\Debug\MailRu register bot.pdb
