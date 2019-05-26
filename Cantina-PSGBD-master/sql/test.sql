@@ -20,7 +20,7 @@ select generate from dual;
 
 delete from meniu;
 
-select * from UTILIZATORI;
+select * from UTILIZATORI where id > 999999;
 
 select * from users;
 

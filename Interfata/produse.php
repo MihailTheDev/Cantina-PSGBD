@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" type="text/css" href="st.css">
 	<title>Interfata</title>
 </head>
 <body>
@@ -12,7 +13,7 @@ if (!$conn) {
     trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
 }
 ?>
-	<h2 align="center">
+	<h2 align="center" class="header">
 	
 	<?php
 	echo "Produsele disponibile din data de ".date("d-m-Y");
@@ -36,7 +37,7 @@ if (!$conn) {
 				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
 			}
 
-			print "<table border='1' align='center' style='width:600px; line-height:40px;l='>\n";
+			print "<table border='1' align='center'; style='width:600px; line-height:40px;'>\n";
 			while ($row = oci_fetch_array($stid, OCI_ASSOC+OCI_RETURN_NULLS)) {
 				print "<tr>\n";
 				foreach ($row as $item) {

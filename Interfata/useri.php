@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" type="text/css" href="st.css">
 	<title>Interfata</title>
 </head>
 <body>
@@ -12,33 +13,59 @@ if (!$conn) {
     trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
 }
 ?>
-	<h2 align="center">
+
+	<h2 align="center" class="header">
 		Utilizatori
     </h2>
 	
 	</h2>
-    <div>
-    <button type="submit" style="display: flex;flex-direction: column;">Adauga user</button>
-    <?php
-      /* $sql = 'SELECT createUser() FROM dual';
-    if (!$sql) {
-    $e = oci_error($conn);
-    trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-}
- */
-    ?>
-    <button type="submit" style="display: flex;flex-direction: column;">Sterge user</button>
-    <?php
+    <div  style="padding-bottom:30px">
 
-    ?>
+
+    <form action="">
+	<input type="text" name="nume" placeholder="Introduce numele de user">
+	<input type="text" name="tip" placeholder="Tipul de user (Admin/Client)" style="width: 170px">
+	<input type="password" name="parola" placeholder="Introduce parola">
+	<button type="submit">Adauga user</button>
+	<br>
+                  
+				<?php
+			/* 	if (isset($_GET["tip"])) {
+					
+					include 'functionAdd.php';
+					$nume=$_GET['nume'];
+					$tip=$_GET['tip'];
+					$parola=$_GET['parola'];
+					add_user($nume,$tip,$parola);
+				} */
+				?>
+
+	</form>			
+    <form action="">
+	<input type="text" name="nume" placeholder="Introduce numele de user">
+	<input type="password" name="parola" placeholder="Introduce parola" style="width: 170px">
+	<button type="submit">Sterge user</button>
+	<br>
+    
+		<?php
+			
+			/* include 'functionDelete.php';
+			$nume=$_GET['nume'];
+			$parola=$_GET['parola'];
+			delete_user($nume,$parola); */
+
+		?>
+
+    </form>
     </div>
+	
 	<table align="center" border="1px" style="width: 600px; line-height: 40px;">
 			<tr>
-			<th style="width:408px; background-color: brown">Nume utilizator</th>
+			<th style="width:303px; background-color: brown">Nume utilizator</th>
 			<th style="background-color: brown">Privilegiu</th>
 			</tr>
 			<?php
-			$stid = oci_parse($conn, 'SELECT NUME, TIP FROM UTILIZATORI  WHERE ID_UTILIZATOR<200');
+			$stid = oci_parse($conn, 'SELECT NUME, TIP FROM UTILIZATORI  WHERE ID_UTILIZATOR>999998');
 			if (!$stid) {
 				$e = oci_error($conn);
 				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
