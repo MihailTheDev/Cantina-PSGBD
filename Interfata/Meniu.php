@@ -20,14 +20,17 @@ if (!$conn) {
 	?>
 	
 	</h2>
-	<button value="Refresh Page" style="cursor:pointer" onClick="window.location.reload()";>Genereaza Meniu</button>
-	<button style="float:right; cursor:pointer;" onclick="window.location.assign('user.php')">Vizualizeaza utilizatorii</button>
+	<button style="float:left; cursor:pointer;" onclick="window.location.assign('generateMenu.php')"> Generate Menu</button>
+
+	<button style="float:left; cursor:pointer; " onclick="window.location.assign('deleteMenu.php')"> Delete Menu </button>
+	
+
+	<button style="float:right; cursor:pointer;" onclick="window.location.assign('user.php?start=1&end=50')">Vizualizeaza utilizatorii</button>
 	<button style="float:right; cursor:pointer;" onclick="window.location.assign('produse.php')">Adauga rating</button>
 
 	<table align="center" border="1px" style="width: 600px; line-height: 40px;">
 			<tr>
-			<th style="background-color:brown;">Denumire preparat/Dish name</th>
-			<th style="background-color:brown;">Cantitate/Cantity</th>
+			<th style="background-color:brown; width: 500px;">Denumire preparat/Dish name</th>
 			<th style="background-color:brown;">Pret/Price</th>
 			</tr>
 			
@@ -35,7 +38,7 @@ if (!$conn) {
 				/* include 'generateMenu.php';
 				generateMenu(); */
 
-			$stid = oci_parse($conn, 'SELECT NUME, PRET FROM PRODUSE ORDER BY DBMS_RANDOM.VALUE');
+			$stid = oci_parse($conn, 'SELECT * from displayedMenu');
 			if (!$stid) {
 				$e = oci_error($conn);
 				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);

@@ -24,11 +24,11 @@ if (!$conn) {
 			<tr>
 			<th style="width:75px; background-color: brown">Numar</th>
 			<th style="width:433px; background-color: brown">Denumire produs</th>
-			<th style="background-color: brown">Pret</th>
-			<th style="background-color: brown">Rating</th>
+			<!-- <th style="background-color: brown">Pret</th>
+			<th style="background-color: brown">Rating</th> -->
 			</tr>
 			<?php
-			$stid = oci_parse($conn, 'SELECT ID_PRODUS, NUME, PRET FROM PRODUSE');
+			$stid = oci_parse($conn, 'SELECT ID_PRODUS, NUME FROM PRODUSE');
 			//$stid = oci_parse($conn, 'SELECT PRODUSE.ID_PRODUS, PRODUSE.NUME, PRODUSE.PRET, RATING.VALOARE_RATING FROM PRODUSE INNER JOIN RATING ON PRODUSE.ID_PRODUS=RATING.ID_PRODUS');
 			if (!$stid) {
 				$e = oci_error($conn);
@@ -62,9 +62,9 @@ if (!$conn) {
 		<input type="text" name="valoare" placeholder="Rating (1-5)" style="width: 170px">
 		<button type="submit" name="submit" style="cursor:pointer">Adauga rating</button>     
 		</form>
-		
+
 		<br>
-		<button style="cursor:pointer; font-size: 15px" onclick="window.location.assign('rating_list.php')">Lista rating</button>
+		<button style="cursor:pointer; font-size: 15px" onclick="window.location.assign('rating_list.php')">Lista de rating a produselor</button>
 		
 		</div>
 </body>

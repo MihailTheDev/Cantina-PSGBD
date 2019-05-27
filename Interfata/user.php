@@ -34,9 +34,7 @@ if (!$conn) {
     
 	<br>         
     </form>	
-
-    <button style="float:right; cursor:pointer" onclick="window.location.assign('Meniu.php')">Inapoi</button>	
-    	
+    <button style="float:right; cursor:pointer" onclick="window.location.assign('Meniu.php')">Inapoi</button>		
     <form action="" method="POST">
 	<input type="text" name="nume" placeholder="Introduce numele de user">
 	<input type="password" name="parola" placeholder="Introduce parola" style="width: 170px">
@@ -53,7 +51,18 @@ if (!$conn) {
 			<th style="background-color: brown">Privilegiu</th>
 			</tr>
 			<?php
-			$stid = oci_parse($conn, 'SELECT NUME, TIP FROM UTILIZATORI WHERE ID_UTILIZATOR>999990');
+
+			$pageStart = $_GET['start'];
+			$pageEnd = $_GET['end'];
+
+			$idStart = $pageStart;
+			$idEnd = $pageEnd;
+			$pageSize = 50;
+			$stid = oci_parse($conn, 'SELECT NUME, TIP FROM UTILIZATORI WHERE ID_UTILIZATOR>='.$pageStart.' and ID_UTILIZATOR<='.$pageEnd);
+
+			$pageStart = $pageStart + $pageSize;
+			$pageEnd = $pageEnd + $pageSize;
+
 			$r = oci_execute($stid);
 			
 
@@ -67,12 +76,14 @@ if (!$conn) {
 			}
 			print "</table>\n";
 
+			print "<a href='user.php?start=".$pageStart."&end=".$pageEnd."'> next page</a>";
+
 			oci_free_statement($stid);
 			oci_close($conn);
 
 			?>
 	</table>
-    
+  
     
 </body>
 </html>

@@ -20,14 +20,19 @@ if (!$conn) {
 	?>
 	
     </h2>
+    
     <button style="float:right; cursor:pointer;" onclick="window.location.assign('Meniu.php')">Inapoi</button>
-	<table align="center" border="1px" style="width: 600px; line-height: 40px;">
+
+	<table align="center" border="1px" style="width: 500px; line-height: 40px; margin-right:543px;">
 			<tr>
-			<th style="width:100px; background-color: brown">Numar produs</th>
-			<th style="width:400px; background-color: brown">Rating</th>
+			<th style="width:97px; background-color: brown">Numar produs</th>
+            <th style="width200px; background-color: brown">Nume produs</th>
+            <th style="width:55px; background-color: brown">Rating</th>
 			</tr>
-			<?php
-			$stid = oci_parse($conn, 'SELECT * FROM RATING');
+            <?php
+            
+            $stid = oci_parse($conn, 'SELECT PRODUSE.ID_PRODUS, PRODUSE.NUME, RATING.VALOARE_RATING FROM PRODUSE INNER JOIN RATING ON PRODUSE.ID_PRODUS=RATING.ID_PRODUS');
+
 			if (!$stid) {
 				$e = oci_error($conn);
 				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
@@ -38,7 +43,7 @@ if (!$conn) {
 				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
 			}
 
-			print "<table border='1' align='center'; style='width:600px; line-height:40px;'>\n";
+			print "<table border='1px' align='center'; style='width:500px; line-height:40px;'>\n";
 			while ($row = oci_fetch_array($stid, OCI_ASSOC+OCI_RETURN_NULLS)) {
 				print "<tr>\n";
 				foreach ($row as $item) {
