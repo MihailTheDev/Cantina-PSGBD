@@ -21,7 +21,8 @@ if (!$conn) {
     </h2>
     <?php
         include_once "user_add.php";
-        include_once "user_delete.php";
+		include_once "user_delete.php";
+		include_once "check_user.php";
     ?>
     <div  style="padding-bottom:30px">
 
@@ -34,11 +35,19 @@ if (!$conn) {
     
 	<br>         
     </form>	
-    <button style="float:right; cursor:pointer" onclick="window.location.assign('Meniu.php')">Inapoi</button>		
+
+    <button style="float:right; cursor:pointer" onclick="window.location.assign('Meniu.php')">Inapoi</button>
+
     <form action="" method="POST">
 	<input type="text" name="nume" placeholder="Introduce numele de user">
 	<input type="password" name="parola" placeholder="Introduce parola" style="width: 170px">
 	<button type="submit"  name="submit-delete" style="cursor:pointer">Sterge user</button>
+	<br>
+
+	<form action="" method="POST">
+	<input type="text" name="nume" placeholder="Introduce numele de user">
+	<input type="password" name="parola" placeholder="Introduce parola" style="width: 170px">
+	<button type="submit"  name="submit-check" style="cursor:pointer">Verifica existenta user</button>
 	<br>
 
 	

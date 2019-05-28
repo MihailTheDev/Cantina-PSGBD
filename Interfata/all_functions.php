@@ -35,24 +35,59 @@
 			oci_free_statement($stid);
 			oci_close($conn);
         }
-        
 
-        function add_rating($id, $valoare){
+        function check_user($nume, $parola){
             $conn = oci_connect('ANDR', 'ANDR', 'localhost/XE');
-            $sql = 'BEGIN :value := AddRating(:id,:valoare); END;';
+            $sql = 'BEGIN :value := checkUser(:name,:parola); END;';
             $stid = oci_parse($conn, $sql);
-			oci_bind_by_name($stid, ':id', $id);
-            oci_bind_by_name($stid, ':valoare', $valoare);
+			oci_bind_by_name($stid, ':name', $nume);
+            oci_bind_by_name($stid, ':parola', $parola);
             oci_bind_by_name($stid, ':value', $value);
             oci_execute($stid);
 
             if($value)
-			echo "Rating adaugat, va multumim! <br>";
+			echo "User-ul se afla in baza de date <br>";
 			
 			oci_free_statement($stid);
 			oci_close($conn);
         }
+        
 
+         function add_rating($id, $valoare){
+            $conn = oci_connect('ANDR', 'ANDR', 'localhost/XE');
+            $sql = 'BEGIN :value := AddRating(:id,:valoare); END;';
+            $stid = oci_parse($conn, $sql);
+
+			oci_bind_by_name($stid, ':id', $id);
+            oci_bind_by_name($stid, ':valoare', $valoare);
+            oci_bind_by_name($stid, ':value', $value);
+
+            oci_execute($stid);
+
+            if($value)
+			echo "Rating adaugat, va multumim! <br>";
+			else echo "fail";
+			oci_free_statement($stid);
+			oci_close($conn);
+         }
+
+
+         function add_com($id_utilizator, $id_comanda){
+            $conn = oci_connect('ANDR', 'ANDR', 'localhost/XE');
+                $sql = 'BEGIN :value := CheckoutOrder(:id_utilizator, :id_comanda); END;';
+                $stid = oci_parse($conn, $sql);
+    
+                oci_bind_by_name($stid, ':id_utilizator', $id_utilizator);
+                oci_bind_by_name($stid, ':id_comanda', $id_comanda);
+                
+                oci_execute($stid);
+                if($value)
+                echo "Comanda adaugata <br>";
+                
+                oci_free_statement($stid);
+                oci_close($conn);
+        
+            }
 
 
         function generateMenu(){
@@ -84,6 +119,7 @@
                 oci_close($conn);
         
             }
+
         ?>
         
 

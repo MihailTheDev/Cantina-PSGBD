@@ -16,21 +16,21 @@ if (!$conn) {
 	<h2 align="center" class="header">
 	
 	<?php
-	include_once "add_rating.php";
-	echo "Lista de produse la care se poate da rating ";
+	echo "Lista de comenzi ";
+	include_once "add_comanda.php";
 	?>
-	
 	</h2>
-	<table align="center" border="1px" style="width: 800px; line-height: 40px;">
+
+	<button style="float:right; cursor:pointer" onclick="window.location.assign('Meniu.php')">Inapoi</button>
+
+	<table align="center" border="1px" style="width: 800px; line-height: 40px;  margin-right:394px;">
 			<tr>
-			<th style="width:75px; background-color: brown">Numar</th>
-			<th style="width:433px; background-color: brown">Denumire produs</th>
-			<!-- <th style="background-color: brown">Pret</th>
-			<th style="background-color: brown">Rating</th> -->
+			<th style="width:100px; background-color: brown">Numarul comenzii</th>
+			<th style="width:100px; background-color: brown">Nume Utilizator</th>
+			<th style="width:100px; background-color: brown">Numarul utilizatorului</th>
 			</tr>
 			<?php
-			$stid = oci_parse($conn, 'SELECT ID_PRODUS, NUME FROM PRODUSE');
-			//$stid = oci_parse($conn, 'SELECT PRODUSE.ID_PRODUS, PRODUSE.NUME, PRODUSE.PRET, RATING.VALOARE_RATING FROM PRODUSE INNER JOIN RATING ON PRODUSE.ID_PRODUS=RATING.ID_PRODUS');
+			$stid = oci_parse($conn, 'SELECT COMANDA.ID_COMANDA, UTILIZATORI.NUME ,UTILIZATORI.ID_UTILIZATOR FROM COMANDA INNER JOIN UTILIZATORI ON COMANDA.ID_UTILIZATOR=UTILIZATORI.ID_UTILIZATOR');
 			if (!$stid) {
 				$e = oci_error($conn);
 				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
@@ -60,14 +60,10 @@ if (!$conn) {
 	<div align="center" style="padding-bottom:3em">
 
 		<form action="" method="POST">
-		<input type="number" name="id" placeholder="Introduce numarul produsului dorit" style="width: 250px">
-		<input type="number" name="valoare" min="1" max="5" placeholder="Rating (1-5)" style="width: 170px">
-		<button type="submit" name="submit" style="cursor:pointer">Adauga rating</button>     
+		<input type="text" name="id" placeholder="Introduce numarul id-ului dumnevoastra" style="width: 250px">
+		<input type="text" name="comanda" placeholder="Numarul comenzii" style="width: 170px">
+		<button type="submit" name="submit" style="cursor:pointer">Adauga comanda</button>     
 		</form>
-
-		<br>
-		<button style="cursor:pointer; font-size: 15px" onclick="window.location.assign('rating_list.php')">Lista de rating a produselor</button>
-		
 		</div>
 </body>
 </html>

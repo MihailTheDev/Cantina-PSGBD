@@ -28,7 +28,7 @@ if (!$conn) {
 	<button style="float:right; cursor:pointer;" onclick="window.location.assign('user.php?start=1&end=50')">Vizualizeaza utilizatorii</button>
 	<button style="float:right; cursor:pointer;" onclick="window.location.assign('produse.php')">Adauga rating</button>
 
-	<table align="center" border="1px" style="width: 600px; line-height: 40px;">
+	<table align="center" border="1px" style="width: 600px; line-height: 40px; margin-right:287px;">
 			<tr>
 			<th style="background-color:brown; width: 500px;">Denumire preparat/Dish name</th>
 			<th style="background-color:brown;">Pret/Price</th>
